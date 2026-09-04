@@ -4,12 +4,12 @@
     "name": "Atly",
     "url": "https://www.atly.com"
   },
-  "description": "Atly's place intelligence for agents: US places scored against 1,400+ intents from real reviews.",
+  "description": "Atly's place intelligence for agents: close to 2 million places scored against 1,400+ intents from real reviews. Densest in the US.",
   "plugins": [
     {
       "name": "atly-places",
       "source": "./",
-      "description": "US place search scored against 1,400+ intents, from real reviews."
+      "description": "Place search scored against 1,400+ intents, from real reviews."
     }
   ]
 }
