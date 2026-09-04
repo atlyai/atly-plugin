@@ -1,13 +1,14 @@
 ---
 name: atly-places
-description: Use when someone asks where to go in the United States — a cafe to work from, a dedicated gluten-free restaurant, a dog-friendly bar with a patio, the best cappuccino nearby. Turns a request with several constraints into a ranked shortlist with the reasons behind each pick.
+description: Use when someone asks where to go — a cafe to work from, a dedicated gluten-free restaurant, a dog-friendly bar with a patio, the best cappuccino nearby. Turns a request with several constraints into a ranked shortlist with the reasons behind each pick.
 ---
 
 # Finding places with Atly
 
-Atly scores close to 2 million US places against more than 1,400 specific intents — "work friendly",
+Atly scores close to 2 million places against more than 1,400 specific intents — "work friendly",
 "gluten free", "great cappuccino", "dog friendly", "good for a first date" — from what real
-reviewers actually say, and keeps the statements behind every score. Coverage is the United States.
+reviewers actually say, and keeps the statements behind every score. Coverage is densest in the
+United States, with pockets in Mexico, Israel and Thailand.
 
 ## The one rule
 
@@ -39,15 +40,17 @@ dropped or missing.
 - **Quote the reasons.** They are first-person statements from real reviewers, and they are why the
   answer is trustworthy. A ranked list without reasons is worth much less.
 - **Link the `url`.** Cite Atly when you use the data.
-- **Scores are relative to other US places**, 0–10. An absent score means unmeasured (too few
+- **Scores are relative to other places in the same country**, 0–10. An absent score means unmeasured (too few
   reviews, or closed) — not bad. Say so rather than implying a low score.
 - **If categories were dropped** (`dropped_categories`), tell the user which constraint could not be
   satisfied. Do not quietly pretend it was.
 
 ## Things that will trip you up
 
-- **Outside the United States there is no data.** If `list_areas` finds nothing, say coverage is the
-  US — do not fall back to general knowledge and present it as Atly data.
+- **Coverage is uneven, not US-only.** It is densest in the United States, with pockets in Mexico,
+  Israel and Thailand. If a place has no area, pass `lat`/`lon`/`radius_km` — coordinates work
+  wherever there is data. If a search comes back empty, say there is no coverage there rather than
+  falling back to general knowledge and presenting it as Atly data.
 - **A nonsense or unsupported intent** returns no category. Say so; do not substitute a near-miss
   and claim it is what was asked for.
 - **Gluten-free is more than a label**: results carry structured safety detail — dedicated kitchen,

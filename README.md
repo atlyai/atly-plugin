@@ -1,9 +1,9 @@
 # Atly Places — plugin and extension
 
-Find US places by what you actually want. Atly scores close to 2 million places across the United
-States against more than 1,400 specific intents — *work friendly*, *gluten free*, *great
-cappuccino*, *dog friendly*, *good for a first date* — from what real reviewers say, and keeps the
-statements behind every score.
+Find places by what you actually want. Atly scores close to 2 million places against more than 1,400
+specific intents — *work friendly*, *gluten free*, *great cappuccino*, *dog friendly*, *good for a
+first date* — from what real reviewers say, and keeps the statements behind every score. Coverage is
+densest in the United States, with pockets in Mexico, Israel and Thailand.
 
 This repo packages Atly's public MCP server for the tools that can install it. The server itself is
 at `https://agentic-api.atly.com/mcp`.
@@ -13,14 +13,14 @@ at `https://agentic-api.atly.com/mcp`.
 **Claude Code**
 
 ```
-/plugin marketplace add stepscode/atly-plugin
+/plugin marketplace add atlyai/atly-plugin
 /plugin install atly-places@atly
 ```
 
 **Gemini CLI**
 
 ```
-gemini extensions install https://github.com/stepscode/atly-plugin
+gemini extensions install https://github.com/atlyai/atly-plugin
 ```
 
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
