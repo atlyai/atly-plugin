@@ -17,6 +17,8 @@ at `https://agentic-api.atly.com/mcp`.
 /plugin install atly-places@atly
 ```
 
+Then `/atly` in any session brings the skill in; the tools are there either way.
+
 **Gemini CLI**
 
 ```
@@ -46,7 +48,7 @@ reviews, and a link to each place.
 | | |
 |---|---|
 | `.claude-plugin/` | Claude Code plugin + marketplace manifests |
-| `skills/atly-places/SKILL.md` | how to use the tools well — the workflow, and the traps |
+| `skills/atly/SKILL.md` | how to use the tools well — the workflow, and the traps |
 | `.mcp.json` | the remote MCP server, for Claude Code |
 | `gemini-extension.json`, `GEMINI.md` | the same for Gemini CLI |
 

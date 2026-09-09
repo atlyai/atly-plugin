@@ -1,7 +1,7 @@
 {
   "name": "atly-places",
   "displayName": "Atly Places",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Find places by what you actually want — work friendly, gluten free, great cappuccino, dog friendly — scored from real reviews, with the statements behind every score.",
   "author": { "name": "Atly", "url": "https://www.atly.com" },
   "repository": "https://github.com/atlyai/atly-plugin",
