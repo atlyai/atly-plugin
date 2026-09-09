@@ -1,5 +1,5 @@
 ---
-name: atly-places
+name: atly
 description: Use when someone asks where to go — a cafe to work from, a dedicated gluten-free restaurant, a dog-friendly bar with a patio, the best cappuccino nearby. Turns a request with several constraints into a ranked shortlist with the reasons behind each pick.
 ---
 
