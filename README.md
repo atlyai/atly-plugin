@@ -10,6 +10,9 @@ at `https://agentic-api.atly.com/mcp`.
 
 ## Install
 
+Submitted to Anthropic's Claude plugin directory on 2026-09-18 (Claude Code and Cowork); if and when it is listed there, that becomes the shorter path; meanwhile,
+install from this repository as below.
+
 **Claude Code**
 
 ```
