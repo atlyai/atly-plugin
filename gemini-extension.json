@@ -1,6 +1,6 @@
 {
   "name": "atly-places",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Find places by what you actually want, scored from real reviews.",
   "contextFileName": "GEMINI.md",
   "mcpServers": {

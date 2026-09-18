@@ -36,7 +36,7 @@ Authorize with your email when prompted; the connector then runs under your own 
 ## What you can ask
 
 - Find a work-friendly cafe with great cappuccino in New York.
-- Where can I get a dedicated gluten-free dinner in Los Angeles?
+- Where can I get a safe gluten-free dinner in Los Angeles?
 - A dog-friendly spot with good coffee and outdoor seating in San Francisco.
 - Best coffee within 2 km of 40.7580, -73.9855.
 
