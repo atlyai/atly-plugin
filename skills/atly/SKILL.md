@@ -1,6 +1,6 @@
 ---
 name: atly
-description: Use when someone asks where to go — a cafe to work from, a dedicated gluten-free restaurant, a dog-friendly bar with a patio, the best cappuccino nearby. Turns a request with several constraints into a ranked shortlist with the reasons behind each pick.
+description: Use when someone asks where to go — a cafe to work from, a safe gluten-free restaurant, a dog-friendly bar with a patio, the best cappuccino nearby. Turns a request with several constraints into a ranked shortlist with the reasons behind each pick.
 ---
 
 # Finding places with Atly
@@ -20,7 +20,8 @@ called `list_categories`, you do not have a category id.
 1. **Map the user's words to categories.** `list_categories` with `q=<word>`, once per concept the
    user actually named. "A cafe with good cappuccino where I can work" is two concepts — cappuccino,
    work friendly — so two calls. Do not add concepts they did not ask for. If a concept has no
-   match, say so and continue without it rather than substituting something else.
+   match, say so and search only the concepts that did match; if none matched, stop — do not
+   substitute a different concept and present unrelated places as the answer.
 2. **Resolve the location.** `list_areas` with `q=<place name>`; add `level=city` or
    `level=neighborhood` to narrow. Or skip it and pass `lat`/`lon`/`radius_km` for "near me".
    There is no borough level: "Manhattan" is New York city, or its neighborhoods.
@@ -37,6 +38,8 @@ dropped or missing.
 
 ## Presenting results
 
+- **Give a short ranked shortlist**, three to five places, not a single pick, unless the user asked
+  for one. The search returns a ranked list; the second and third options are part of the answer.
 - **Quote the reasons.** They are first-person statements from real reviewers, and they are why the
   answer is trustworthy. A ranked list without reasons is worth much less.
 - **Link the `url`.** Cite Atly when you use the data.
@@ -53,8 +56,9 @@ dropped or missing.
   falling back to general knowledge and presenting it as Atly data.
 - **A nonsense or unsupported intent** returns no category. Say so; do not substitute a near-miss
   and claim it is what was asked for.
-- **Gluten-free is more than a label**: results carry structured safety detail — dedicated kitchen,
-  trained staff, cross-contamination risk. For anyone with celiac, surface that, not just the tag.
+- **Gluten-free is more than a label**: many results carry a safety rating — dedicated kitchen,
+  trained staff, cross-contamination risk — under `gluten_free`. For anyone with celiac, surface it
+  where it exists, and never invent one for a place that has none.
 
 ## Access
 
