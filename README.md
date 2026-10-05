@@ -58,11 +58,13 @@ reviews, and a link to each place.
 ## What this plugin runs and sends
 
 Nothing runs locally: the plugin is a skill (text) and the address of a remote MCP server. When the tools
-are used, the agent sends `agentic-api.atly.com` the search it builds from the user's request — intent
-categories, an area name or coordinates and a radius, a place id — and, if it calls `submit_feedback`, one
-sentence about how a result went. The skill tells it not to include the user's words or anything about the
-person there. Nothing else is sent, and no other destination is contacted. Requests are logged with the
-caller's IP address for quotas and abuse prevention; see the privacy policy below.
+are used, the agent sends `agentic-api.atly.com` what it needs to search: short search words taken from the
+user's request (such as "gluten free" or "midtown"), an area name or the user's coordinates and a radius,
+place ids, and, if it calls `submit_feedback`, one sentence about how a result went (the tool's description
+asks for no user words or personal details there). The plugin adds nothing else and contacts no other
+destination; the MCP client itself sends its usual connection details (client name, user-agent, and an
+OAuth token if signed in). Atly logs each request's parameters, user-agent and IP address for quotas, abuse
+prevention and product statistics; see the privacy policy below.
 
 ## Access and limits
 
