@@ -55,6 +55,17 @@ reviews, and a link to each place.
 | `.mcp.json` | the remote MCP server, for Claude Code |
 | `gemini-extension.json`, `GEMINI.md` | the same for Gemini CLI |
 
+## What this plugin runs and sends
+
+Nothing runs locally: the plugin is a skill (text) and the address of a remote MCP server. When the tools
+are used, the agent sends `agentic-api.atly.com` what it needs to search: short search words taken from the
+user's request (such as "gluten free" or "midtown"), an area name or the user's coordinates and a radius,
+place ids, and, if it calls `submit_feedback`, one sentence about how a result went (the tool's description
+asks for no user words or personal details there). The plugin adds nothing else and contacts no other
+destination; the MCP client itself sends its usual connection details (client name, user-agent, and an
+OAuth token if signed in). Atly logs each request's parameters, user-agent and IP address for quotas, abuse
+prevention and product statistics; see the privacy policy below.
+
 ## Access and limits
 
 No key is needed to start; anonymous callers share a small hourly quota per IP. `POST
@@ -63,7 +74,7 @@ that email raises it. Chat connectors authorize with OAuth instead and need no k
 
 - Guide for agents: https://agentic-api.atly.com/v0/docs
 - OpenAPI contract: https://agentic-api.atly.com/v0/openapi.yaml
-- Coverage: United States
+- Coverage: densest in the United States, with pockets in Mexico, Israel and Thailand
 - Privacy: https://www.atly.com/privacy · Terms: https://www.atly.com/terms
 
 Built by [Atly](https://www.atly.com) (Steps Solutions Ltd.).
