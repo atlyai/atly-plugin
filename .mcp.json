@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "atly": {
+      "type": "http",
       "url": "https://agentic-api.atly.com/mcp"
     }
   }
