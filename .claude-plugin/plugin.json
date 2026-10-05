@@ -9,6 +9,7 @@
   },
   "homepage": "https://agentic-api.atly.com/v0/docs",
   "privacyPolicyUrl": "https://www.atly.com/privacy",
+  "termsOfServiceUrl": "https://www.atly.com/terms",
   "repository": "https://github.com/atlyai/atly-plugin",
   "license": "MIT",
   "keywords": [
