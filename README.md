@@ -6,7 +6,7 @@ first date* — from what real reviewers say, and keeps the statements behind ev
 densest in the United States, with pockets in Mexico, Israel and Thailand.
 
 This repo packages Atly's public MCP server for the tools that can install it. The server itself is
-at `https://agentic-api.atly.com/mcp`.
+at `https://agentic-api.atly.com/v2/mcp`.
 
 ## Install
 
@@ -31,7 +31,7 @@ gemini extensions install https://github.com/atlyai/atly-plugin
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
-https://agentic-api.atly.com/mcp
+https://agentic-api.atly.com/v2/mcp
 ```
 
 Authorize with your email when prompted; the connector then runs under your own account.
@@ -68,12 +68,12 @@ prevention and product statistics; see the privacy policy below.
 
 ## Access and limits
 
-No key is needed to start; anonymous callers share a small hourly quota per IP. `POST
-https://agentic-api.atly.com/v0/keys` with an email returns a key with a daily quota, and verifying
-that email raises it. Chat connectors authorize with OAuth instead and need no key at all.
+No key is needed to start; anonymous callers get a small quota. `POST
+https://agentic-api.atly.com/v2/keys` with an email returns a key with a daily quota, and verifying
+that email raises it. Chat connectors need no key: they ask the user to sign in (OAuth, email code or one click) only when the anonymous quota runs out.
 
-- Guide for agents: https://agentic-api.atly.com/v0/docs
-- OpenAPI contract: https://agentic-api.atly.com/v0/openapi.yaml
+- Guide for agents: https://agentic-api.atly.com/v2/docs
+- OpenAPI contract: https://agentic-api.atly.com/v2/openapi.yaml
 - Coverage: densest in the United States, with pockets in Mexico, Israel and Thailand
 - Privacy: https://www.atly.com/privacy · Terms: https://www.atly.com/terms
 

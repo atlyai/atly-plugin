@@ -12,24 +12,26 @@ United States, with pockets in Mexico, Israel and Thailand.
 
 ## The one rule
 
-**Never invent an id, a place, or a score.** Ids come only from a live response. If you have not
-called `list_categories`, you do not have a category id.
+**Never invent an id, a place, or a score.** Ids come only from a live response. Exact category names
+("Work Friendly", "Cappuccino") and city names ("Austin, TX") are accepted in place of ids; anything
+else goes through `list_categories` or `list_areas` first.
 
 ## The workflow
 
-1. **Map the user's words to categories.** `list_categories` with `q=<word>`, once per concept the
-   user actually named. "A cafe with good cappuccino where I can work" is two concepts — cappuccino,
+1. **Map the user's words to categories.** Use an exact category name directly, or `list_categories`
+   with `q=<word>`, once per concept the user actually named. "A cafe with good cappuccino where I can work" is two concepts — cappuccino,
    work friendly — so two calls. Do not add concepts they did not ask for. If a concept has no
    match, say so and search only the concepts that did match; if none matched, stop — do not
    substitute a different concept and present unrelated places as the answer.
-2. **Resolve the location.** `list_areas` with `q=<place name>`; add `level=city` or
-   `level=neighborhood` to narrow. Or skip it and pass `lat`/`lon`/`radius_km` for "near me".
+2. **Resolve the location.** A city name works directly as `area_id`. Otherwise `list_areas` with
+   `q=<place name>`; add `level=city` or `level=neighborhood` to narrow. Or skip it and pass `lat`/`lon`/`radius_km` for "near me".
    There is no borough level: "Manhattan" is New York city, or its neighborhoods.
-3. **Search.** `search_places` with the category ids and either `area_id` or coordinates. Results
-   come back ranked for exactly those intents, each with a 0–10 score, `reasons` to quote, and a
-   `url`.
-4. **Go deeper when it helps.** `get_place` for hours, contact details, every category score, and
-   more review statements.
+3. **Search.** `search_places` with the categories and either `area_id` or coordinates. Results
+   come back ranked for exactly those intents, each with a 0–10 score, `reasons` to quote, an Atly
+   `url` where a page exists, a `maps_url` for directions, and `open_now` when the hours are known.
+   The first three results already carry hours and contact details.
+4. **Go deeper when it helps.** `get_place` for hours (typed, in the place's local time), contact
+   details, every category score, and more review statements.
 5. **Say how it went.** `submit_feedback` with the `call_id` from a response. It is free and it is
    read by people.
 
@@ -42,7 +44,9 @@ dropped or missing.
   for one. The search returns a ranked list; the second and third options are part of the answer.
 - **Quote the reasons.** They are first-person statements from real reviewers, and they are why the
   answer is trustworthy. A ranked list without reasons is worth much less.
-- **Link the `url`.** Cite Atly when you use the data.
+- **Link the `url`** (or `maps_url` when there is no Atly page). Cite Atly when you use the data.
+- **Open now:** say what `open_now` says, and when `hours_updated_at` is old, suggest confirming.
+  No `open_now` means the hours are unknown; do not claim a place is open.
 - **Scores are relative to other places in the same country**, 0–10. An absent score means unmeasured (too few
   reviews, or closed) — not bad. Say so rather than implying a low score.
 - **If categories were dropped** (`dropped_categories`), tell the user which constraint could not be
@@ -62,7 +66,8 @@ dropped or missing.
 
 ## Access
 
-No key is needed to start; anonymous callers share a small hourly quota per IP. For a daily quota,
-`POST https://agentic-api.atly.com/v0/keys` with an email returns a key to send as `X-API-Key`;
-verifying the email raises it further. Full guide for agents:
-https://agentic-api.atly.com/v0/docs
+No sign-in is needed to start; anonymous callers get a small quota. When it runs out the connector
+asks the user to sign in with their email (one click on a browser that signed in before), which
+gives a daily quota. Harnesses can instead `POST https://agentic-api.atly.com/v2/keys` with an email
+for a key to send as `X-API-Key`; verifying the email raises it further. Full guide for agents:
+https://agentic-api.atly.com/v2/docs
