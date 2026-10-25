@@ -13,9 +13,10 @@ else goes through `list_categories` or `list_areas` first.
 
 ## The workflow
 
-1. **Map the user's words to categories.** Use an exact category name directly, or `list_categories`
-   with `q=<word>`, once per concept the user actually named. "A cafe with good cappuccino where I can work" is two concepts — cappuccino,
-   work friendly — so two calls. Do not add concepts they did not ask for. If a concept has no
+1. **Map the user's words to categories.** One category per concept the user actually named: "a
+   cafe with good cappuccino where I can work" is two concepts, cappuccino and work friendly. Pass a
+   concept's exact category name directly ("Cappuccino", "Work Friendly"); otherwise one
+   `list_categories` call with `q=<word>` for it. Do not add concepts they did not ask for. If a concept has no
    match, say so and search only the concepts that did match; if none matched, stop — do not
    substitute a different concept and present unrelated places as the answer.
 2. **Resolve the location.** A city name works directly as `area_id`. Otherwise `list_areas` with
@@ -24,7 +25,8 @@ else goes through `list_categories` or `list_areas` first.
 3. **Search.** `search_places` with the categories and either `area_id` or coordinates. Results
    come back ranked for exactly those intents, each with a 0–10 score, `reasons` to quote, an Atly
    `url` where a page exists, a `maps_url` for directions, and `open_now` when the hours are known.
-   The first three results already carry hours and contact details.
+   The first three results also carry hours and contact details when Atly has them (hours are
+   missing for most places).
 4. **Go deeper when it helps.** `get_place` for hours (typed, in the place's local time), contact
    details, every category score, and more review statements.
 5. **Say how it went.** `submit_feedback` with the `call_id` from a response. It is free and it is
@@ -40,7 +42,8 @@ dropped or missing.
 - **Quote the reasons.** They are first-person statements from real reviewers, and they are why the
   answer is trustworthy. A ranked list without reasons is worth much less.
 - **Link the `url`** (or `maps_url` when there is no Atly page). Cite Atly when you use the data.
-- **Open now:** say what `open_now` says, and when `hours_updated_at` is old, suggest confirming.
+- **Open now:** say what `open_now` says, and when `hours_updated_at` is missing or over a year old,
+  suggest confirming.
   No `open_now` means the hours are unknown; do not claim a place is open.
 - **Scores are relative to other places in the same country**, 0–10. An absent score means unmeasured (too few
   reviews, or closed) — not bad. Say so rather than implying a low score.
@@ -61,8 +64,10 @@ dropped or missing.
 
 ## Access
 
-No sign-in is needed to start; anonymous callers get a small quota. When it runs out the connector
-asks the user to sign in with their email (one click on a browser that signed in before), which
-gives a daily quota. Harnesses can instead `POST https://agentic-api.atly.com/v2/keys` with an email
-for a key to send as `X-API-Key`; verifying the email raises it further. Full guide for agents:
-https://agentic-api.atly.com/v2/docs
+No sign-in is needed to start; anonymous callers get a small quota. When it runs out, signing in
+with an email gives a daily quota of its own. In ChatGPT or Claude chat the connector asks for it
+(one click on a browser that signed in before). In Claude Code, a call that fails asking for
+sign-in means the user should authenticate the `atly` server: `/mcp`, then Authenticate (on a
+machine with no browser, `claude mcp login atly --no-browser`). API keys (`POST
+https://agentic-api.atly.com/v2/keys`) are for direct REST calls, not for this plugin. Full guide
+for agents: https://agentic-api.atly.com/v2/docs

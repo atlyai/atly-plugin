@@ -10,8 +10,8 @@ at `https://agentic-api.atly.com/v2/mcp`.
 
 ## Install
 
-Submitted to Anthropic's Claude plugin directory on 2026-09-18 (Claude Code and Cowork); if and when it is listed there, that becomes the shorter path; meanwhile,
-install from this repository as below.
+Listed in Anthropic's Claude plugin directory (Claude Code, Cowork and the Claude apps) at
+[claude.ai/directory/atly](https://claude.ai/directory/atly); or install from this repository as below.
 
 **Claude Code**
 
@@ -20,7 +20,7 @@ install from this repository as below.
 /plugin install atly-places@atly
 ```
 
-Then `/atly` in any session brings the skill in; the tools are there either way.
+Then `/atly-places:atly` in any session brings the skill in; the tools are there either way.
 
 **Gemini CLI**
 
@@ -34,7 +34,8 @@ gemini extensions install https://github.com/atlyai/atly-plugin
 https://agentic-api.atly.com/v2/mcp
 ```
 
-Authorize with your email when prompted; the connector then runs under your own account.
+It works without signing in; when the free allowance runs out, sign in with your email when
+prompted and the connector then runs under your own account.
 
 ## What you can ask
 
@@ -68,9 +69,11 @@ prevention and product statistics; see the privacy policy below.
 
 ## Access and limits
 
-No key is needed to start; anonymous callers get a small quota. `POST
-https://agentic-api.atly.com/v2/keys` with an email returns a key with a daily quota, and verifying
-that email raises it. Chat connectors need no key: they ask the user to sign in (OAuth, email code or one click) only when the anonymous quota runs out.
+No key or sign-in is needed to start; anonymous callers get a small quota. Over MCP (this plugin,
+chat connectors) the way up is signing in with your email, which the client asks for when the
+anonymous quota runs out (in Claude Code: `/mcp`, then Authenticate). For direct REST calls, `POST
+https://agentic-api.atly.com/v2/keys` with an email returns a key with a daily quota of its own,
+5,000 a day once the email is verified.
 
 - Guide for agents: https://agentic-api.atly.com/v2/docs
 - OpenAPI contract: https://agentic-api.atly.com/v2/openapi.yaml
