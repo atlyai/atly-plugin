@@ -31,7 +31,7 @@ gemini extensions install https://github.com/atlyai/atly-plugin
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
-https://agentic-api.atly.com/mcp?version=2
+https://agentic-api.atly.com/v2/mcp
 ```
 
 (Or `https://agentic-api.atly.com/mcp` with the header `Atly-Version: 2`, where your client lets you set headers.)
