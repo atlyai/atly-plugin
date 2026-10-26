@@ -68,6 +68,6 @@ No sign-in is needed to start; anonymous callers get a small quota. When it runs
 with an email gives a daily quota of its own. In ChatGPT or Claude chat the connector asks for it
 (one click on a browser that signed in before). In Claude Code, a call that fails asking for
 sign-in means the user should authenticate the `atly` server: `/mcp`, then Authenticate (on a
-machine with no browser, `claude mcp login plugin:atly-places:atly --no-browser`). API keys (`POST
+machine with no browser, `claude mcp login plugin:atly-places:atly --no-browser`). In Gemini CLI: `/mcp auth atly`. API keys (`POST
 https://agentic-api.atly.com/v2/keys`) are for direct REST calls, not for this plugin. Full guide
 for agents: https://agentic-api.atly.com/v2/docs
