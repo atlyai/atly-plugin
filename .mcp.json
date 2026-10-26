@@ -2,7 +2,10 @@
   "mcpServers": {
     "atly": {
       "type": "http",
-      "url": "https://agentic-api.atly.com/v2/mcp"
+      "url": "https://agentic-api.atly.com/mcp",
+      "headers": {
+        "Atly-Version": "2"
+      }
     }
   }
 }

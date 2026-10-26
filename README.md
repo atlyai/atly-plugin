@@ -6,7 +6,7 @@ first date* — from what real reviewers say, and keeps the statements behind ev
 densest in the United States, with pockets in Mexico, Israel and Thailand.
 
 This repo packages Atly's public MCP server for the tools that can install it. The server itself is
-at `https://agentic-api.atly.com/v2/mcp`.
+at `https://agentic-api.atly.com/mcp`; the plugin asks it for API v2 with the header `Atly-Version: 2`.
 
 ## Install
 
@@ -31,8 +31,10 @@ gemini extensions install https://github.com/atlyai/atly-plugin
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
-https://agentic-api.atly.com/v2/mcp
+https://agentic-api.atly.com/mcp?version=2
 ```
+
+(Or `https://agentic-api.atly.com/mcp` with the header `Atly-Version: 2`, where your client lets you set headers.)
 
 It works without signing in; when the free allowance runs out, sign in with your email when
 prompted and the connector then runs under your own account.

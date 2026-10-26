@@ -5,7 +5,10 @@
   "contextFileName": "GEMINI.md",
   "mcpServers": {
     "atly": {
-      "httpUrl": "https://agentic-api.atly.com/v2/mcp"
+      "httpUrl": "https://agentic-api.atly.com/mcp",
+      "headers": {
+        "Atly-Version": "2"
+      }
     }
   }
 }
