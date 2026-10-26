@@ -6,12 +6,12 @@ first date* — from what real reviewers say, and keeps the statements behind ev
 densest in the United States, with pockets in Mexico, Israel and Thailand.
 
 This repo packages Atly's public MCP server for the tools that can install it. The server itself is
-at `https://agentic-api.atly.com/mcp`.
+at `https://agentic-api.atly.com/mcp`; the plugin asks it for API v2 with the header `Atly-Version: 2`.
 
 ## Install
 
-Submitted to Anthropic's Claude plugin directory on 2026-09-18 (Claude Code and Cowork); if and when it is listed there, that becomes the shorter path; meanwhile,
-install from this repository as below.
+Listed in Anthropic's Claude plugin directory (Claude Code, Cowork and the Claude apps) at
+[claude.ai/directory/atly](https://claude.ai/directory/atly); or install from this repository as below.
 
 **Claude Code**
 
@@ -20,7 +20,7 @@ install from this repository as below.
 /plugin install atly-places@atly
 ```
 
-Then `/atly` in any session brings the skill in; the tools are there either way.
+Then `/atly-places:atly` in any session brings the skill in; the tools are there either way.
 
 **Gemini CLI**
 
@@ -31,10 +31,13 @@ gemini extensions install https://github.com/atlyai/atly-plugin
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
-https://agentic-api.atly.com/mcp
+https://agentic-api.atly.com/v2/mcp
 ```
 
-Authorize with your email when prompted; the connector then runs under your own account.
+(Or `https://agentic-api.atly.com/mcp` with the header `Atly-Version: 2`, where your client lets you set headers.)
+
+It works without signing in; when the free allowance runs out, sign in with your email when
+prompted and the connector then runs under your own account.
 
 ## What you can ask
 
@@ -68,12 +71,14 @@ prevention and product statistics; see the privacy policy below.
 
 ## Access and limits
 
-No key is needed to start; anonymous callers share a small hourly quota per IP. `POST
-https://agentic-api.atly.com/v0/keys` with an email returns a key with a daily quota, and verifying
-that email raises it. Chat connectors authorize with OAuth instead and need no key at all.
+No key or sign-in is needed to start; anonymous callers get a small quota. Over MCP (this plugin,
+chat connectors) the way up is signing in with your email, which the client asks for when the
+anonymous quota runs out (in Claude Code: `/mcp`, then Authenticate). For direct REST calls, `POST
+https://agentic-api.atly.com/v2/keys` with an email returns a key with a daily quota of its own,
+5,000 a day once the email is verified.
 
-- Guide for agents: https://agentic-api.atly.com/v0/docs
-- OpenAPI contract: https://agentic-api.atly.com/v0/openapi.yaml
+- Guide for agents: https://agentic-api.atly.com/v2/docs
+- OpenAPI contract: https://agentic-api.atly.com/v2/openapi.yaml
 - Coverage: densest in the United States, with pockets in Mexico, Israel and Thailand
 - Privacy: https://www.atly.com/privacy · Terms: https://www.atly.com/terms
 
