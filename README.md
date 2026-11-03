@@ -28,6 +28,16 @@ Then `/atly-places:atly` in any session brings the skill in; the tools are there
 gemini extensions install https://github.com/atlyai/atly-plugin
 ```
 
+**Cursor**
+
+Once it is listed in the Cursor Marketplace: **Customize** in the sidebar, search for *Atly Places*,
+then **Install**. Until then, put the repo in Cursor's local plugin folder and run *Developer: Reload
+Window*:
+
+```
+git clone https://github.com/atlyai/atly-plugin ~/.cursor/plugins/local/atly-places
+```
+
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
@@ -57,6 +67,7 @@ reviews, and a link to each place.
 | `skills/atly/SKILL.md` | how to use the tools well — the workflow, and the traps |
 | `.mcp.json` | the remote MCP server, for Claude Code |
 | `gemini-extension.json`, `GEMINI.md` | the same for Gemini CLI |
+| `.cursor-plugin/plugin.json`, `mcp.json` | the same for Cursor (the skill and the icon are shared) |
 
 ## What this plugin runs and sends
 
