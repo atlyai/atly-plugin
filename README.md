@@ -38,6 +38,12 @@ Window*:
 git clone https://github.com/atlyai/atly-plugin ~/.cursor/plugins/local/atly-places
 ```
 
+**Grok**
+
+On grok.com: **Plugins** → **Connectors** → **New Connector** → **Custom**. Name it *Atly*, set the
+server URL to `https://agentic-api.atly.com/mcp`, and choose **Add Connector**. No sign-in is needed.
+Then ask, for example, "a quiet cafe to work from in Austin".
+
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
