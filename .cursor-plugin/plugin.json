@@ -1,0 +1,25 @@
+{
+  "name": "atly-places",
+  "displayName": "Atly Places",
+  "version": "0.2.1",
+  "description": "Find places by what you actually want — work friendly, gluten free, great cappuccino, dog friendly — scored from real reviews, with the statements behind every score.",
+  "author": {
+    "name": "Atly"
+  },
+  "homepage": "https://agentic-api.atly.com/v2/docs",
+  "repository": "https://github.com/atlyai/atly-plugin",
+  "license": "MIT",
+  "logo": ".claude-plugin/icon.png",
+  "category": "integrations",
+  "keywords": [
+    "places",
+    "restaurants",
+    "cafes",
+    "gluten-free",
+    "local-search",
+    "travel",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
+}
