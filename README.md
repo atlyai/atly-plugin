@@ -41,16 +41,14 @@ git clone https://github.com/atlyai/atly-plugin ~/.cursor/plugins/local/atly-pla
 **Grok**
 
 On grok.com: **Plugins** → **Connectors** → **New Connector** → **Custom**. Name it *Atly*, set the
-server URL to `https://agentic-api.atly.com/mcp`, and choose **Add Connector**. No sign-in is needed.
+server URL to `https://agentic-api.atly.com/mcp`, and choose **Add Connector**. It works without signing in.
 Then ask, for example, "a quiet cafe to work from in Austin".
 
 **ChatGPT, Claude (chat), or anything else that speaks MCP** — add the server by URL:
 
 ```
-https://agentic-api.atly.com/v2/mcp
+https://agentic-api.atly.com/mcp
 ```
-
-(Or `https://agentic-api.atly.com/mcp` with the header `Atly-Version: 2`, where your client lets you set headers.)
 
 It works without signing in; when the free allowance runs out, sign in with your email when
 prompted and the connector then runs under your own account.
